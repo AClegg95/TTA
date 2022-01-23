@@ -41,7 +41,31 @@ primary key (player_id)
 
 insert into player_info (player_id, player_name, handicap, date_of_birth, address)
 values
+('1', 'Alex Clegg', '30', '95-12-12', 'HD9 5RN'),
 ('2', 'Sam Clegg', '25', '98-04-17', 'HD9 4RQ'),
 ('3', 'Henry Wise', '29', '99-08-10', 'HD9 4LP');
 
+update player_info
+set address = 'HD9 3TZ'
+where player_id = '3';
+
+delete from meltham
+where shot_id = '14';
+select * from meltham;
+
+select meltham.player_id , player_info.player_id
+from meltham
+inner join player_info
+on meltham.player_id = player_info.player_id;
+
+select * from meltham, player_info
+where meltham.player_id = player_info.player_id and meltham.club_used = 'driver';
+
+select * from meltham, player_info
+where meltham.player_id = player_info.player_id and meltham.hole_number = '1' and 'club_used' = 'pw';
+
 select * from meltham
+where yards_from_green between 100 and 250;
+
+use golf_analysis;
+select yards_from_green, club_used from meltham
